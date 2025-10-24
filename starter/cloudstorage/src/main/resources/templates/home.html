@@ -18,8 +18,8 @@
             <div th:if="${uploadSuccess}" class="alert alert-success">
                 <span th:text="${uploadSuccess}">File uploaded successfully!</span>
             </div>
-            <div th:if="${uploadError}" class="alert alert-danger">
-                <span th:text="${uploadError}">File upload failed!</span>
+            <div th:if="${uploadError}" class="alert alert-danger" >
+                <span th:text="${uploadError}" id="upload-error-message">File upload failed!</span>
             </div>
             <div th:if="${noteSuccess}" class="alert alert-success">
                 <span th:text="${noteSuccess}">Note success</span>

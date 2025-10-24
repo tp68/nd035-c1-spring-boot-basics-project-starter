@@ -193,13 +193,12 @@ class CloudStorageApplicationTests {
 
 		WebElement uploadButton = driver.findElement(By.id("uploadButton"));
 		uploadButton.click();
-		try {
-			webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("success")));
-		} catch (org.openqa.selenium.TimeoutException e) {
-			System.out.println("Large File upload failed");
-		}
-		Assertions.assertFalse(driver.getPageSource().contains("HTTP Status 403 – Forbidden"));
 
+        var errorMessageSpan = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("upload-error-message")));
+
+        final String expectedErrorMessage = "Upload error: The file is too large! The maximum size is 1MB.";
+        String actualErrorMessage = errorMessageSpan.getText();
+        Assertions.assertEquals(expectedErrorMessage, actualErrorMessage, "The upload error message text did not match the expected value.");
 	}
 
  
